@@ -3,19 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Multimarca | Brenda Gimenez</title>
+    <title>Brenda Gimenez | Automotor Paseo La Galería</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --geely-blue: #006BB7;
-            --hyundai-navy: #002c5f;
             --dark-blue: #06131F;
-            --light-gray: #f8f9fa;
+            --light-bg: #f8f9fa;
         }
 
-        body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: var(--dark-blue); scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: var(--dark-blue); scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* Header Estilo Geely DO */
+        /* --- LOGO CAROUSEL (ROTACIÓN INFINITA) --- */
+        .brand-carousel {
+            background: #fff;
+            padding: 20px 0;
+            margin-top: 75px; /* Debajo del header */
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .brand-track {
+            display: flex;
+            width: calc(250px * 12); /* Doble de marcas para el loop */
+            animation: scroll 30s linear infinite;
+        }
+
+        .brand-track .brand-logo {
+            width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 6)); }
+        }
+
+        /* --- HEADER --- */
         header {
             position: fixed; top: 0; width: 100%; height: 75px;
             background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
@@ -26,7 +58,8 @@
             justify-content: space-between; align-items: center; padding: 0 25px; box-sizing: border-box;
         }
 
-        .section-catalog { padding: 120px 20px 60px; max-width: 1200px; margin: 0 auto; }
+        /* --- GRID & CARDS --- */
+        .section-catalog { padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
         .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         .car-card {
@@ -36,9 +69,9 @@
         .car-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: translateY(-5px); }
         .car-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
 
-        /* Paneles de Información */
+        /* --- INFO PANEL --- */
         .info-panel {
-            display: none; grid-column: 1 / -1; background: var(--light-gray);
+            display: none; grid-column: 1 / -1; background: var(--light-bg);
             border-radius: 20px; padding: 40px; margin-top: 20px; border: 1px solid #ddd;
         }
         .info-panel.active { display: block; animation: fadeIn 0.5s forwards; }
@@ -47,33 +80,16 @@
         .panel-text { flex: 1.2; min-width: 300px; }
         .panel-img { flex: 1; min-width: 300px; text-align: center; }
 
-        /* Selector de Colores */
-        .color-selector { margin: 20px 0; display: flex; gap: 12px; align-items: center; }
-        .dot {
-            width: 28px; height: 28px; border-radius: 50%;
-            cursor: pointer; border: 3px solid #fff;
-            box-shadow: 0 0 5px rgba(0,0,0,0.2); transition: 0.2s;
-        }
-        .dot:hover { transform: scale(1.15); border-color: var(--geely-blue); }
-
-        /* Grilla de Especificaciones */
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .spec-item { padding: 8px 0; border-bottom: 1px solid #ddd; font-size: 13px; display: flex; justify-content: space-between; padding-right: 10px; }
+        .spec-item { padding: 8px 0; border-bottom: 1px solid #ddd; font-size: 13px; text-align: left; }
         .spec-item b { color: var(--geely-blue); }
 
-        .tag-hev { background: #28a745; color: white; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; vertical-align: middle; }
+        .price-tag { font-size: 24px; font-weight: 700; color: #000; margin: 15px 0; display: block; }
+        .btn-wa { background: #25d366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 5px; display: inline-block; margin-top: 20px; font-weight: 700; }
 
-        .btn-wa {
-            background: #25d366; color: white; text-decoration: none;
-            padding: 12px 25px; border-radius: 5px; display: inline-block; 
-            margin-top: 25px; font-weight: 700; transition: 0.3s;
-        }
-        .btn-wa:hover { background: #1ebe57; transform: scale(1.05); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        footer { background: #f0f0f0; padding: 40px; text-align: center; margin-top: 60px; font-size: 14px; }
-        @media (max-width: 768px) { .specs-grid { grid-template-columns: 1fr; } .panel-flex { gap: 20px; } }
+        footer { background: #f0f0f0; padding: 40px; text-align: center; }
     </style>
 </head>
 <body>
@@ -81,78 +97,84 @@
 <header>
     <div class="header-container">
         <div style="display: flex; align-items: center; gap: 20px;">
-            <img src="https://geely.com.do/wp-content/uploads/2025/03/logo-black.svg" alt="Geely" style="height: 20px;">
-            <span style="border-left: 2px solid #eee; padding-left: 20px; font-weight: 700; letter-spacing: 1px; font-size: 14px;">BRENDA GIMENEZ</span>
+            <img src="https://geely.com.do/wp-content/uploads/2025/03/logo-black.svg" style="height: 20px;">
+            <span style="border-left: 2px solid #eee; padding-left: 20px; font-weight: 700; font-size: 14px;">BRENDA GIMENEZ</span>
         </div>
         <a href="https://wa.me/595971723658" class="btn-wa" style="margin:0; padding: 8px 15px; font-size: 12px;">WHATSAPP</a>
     </div>
 </header>
 
+<div class="brand-carousel">
+    <div class="brand-track">
+        <div class="brand-logo">#Hyundai</div>
+        <div class="brand-logo">#Isuzu</div>
+        <div class="brand-logo">#Geely</div>
+        <div class="brand-logo">#KGM</div>
+        <div class="brand-logo">#Maserati</div>
+        <div class="brand-logo">#LynkCo</div>
+        <div class="brand-logo">#Hyundai</div>
+        <div class="brand-logo">#Isuzu</div>
+        <div class="brand-logo">#Geely</div>
+        <div class="brand-logo">#KGM</div>
+        <div class="brand-logo">#Maserati</div>
+        <div class="brand-logo">#LynkCo</div>
+    </div>
+</div>
+
 <section class="section-catalog">
-    <h1 style="text-align:center; margin-bottom: 50px; font-size: 32px; letter-spacing: -1px;">Catálogo Paseo La Galería</h1>
+    <h2 style="text-align: center; margin-bottom: 40px;">Modelos en Paseo La Galería</h2>
     
     <div class="model-grid">
+        <div class="car-card" onclick="toggleInfo('info-torres')">
+            <img src="https://geely.com.do/wp-content/uploads/2025/03/vehiculo-thumb-STARRAY.webp" style="filter: brightness(0.7);" alt="KGM Torres">
+            <h3>KGM TORRES 2026</h3>
+            <p style="color: #666; font-size: 13px;">Ver equipamiento completo ↓</p>
+        </div>
+
         <div class="car-card" onclick="toggleInfo('info-gx3')">
             <img src="https://geely.com.do/wp-content/uploads/2025/03/vehiculo-thumb-GX3PRO.webp" alt="Geely GX3">
             <h3>GEELY GX3 PRO AT</h3>
-            <p style="color: #666; font-size: 13px;">Explorar colores y ficha ↓</p>
+            <p style="color: #666; font-size: 13px;">Explorar colores ↓</p>
         </div>
 
-        <div class="car-card" onclick="toggleInfo('info-tucson')">
-            <img src="https://geely.com.do/wp-content/uploads/2025/03/vehiculo-thumb-STARRAY.webp" alt="Tucson HEV">
-            <h3>NEW TUCSON <span class="tag-hev">HYBRID</span></h3>
-            <p style="color: #666; font-size: 13px;">Explorar colores y ficha ↓</p>
+        <div id="info-torres" class="info-panel">
+            <div class="panel-flex">
+                <div class="panel-text">
+                    <h2 style="margin-top:0;">KGM TORRES | Motor 1.5 Turbo</h2>
+                    <span class="price-tag">PYG 3.500.000 <small style="font-size:12px; font-weight:400;">(Entrega inicial / Cuota)</small></span>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">✅ Motor: <b>1.5cc Turbo</b></div>
+                        <div class="spec-item">✅ Transmisión: <b>Caja Automática</b></div>
+                        <div class="spec-item">✅ Airbags: <b>8 Airbags</b></div>
+                        <div class="spec-item">✅ Manejo: <b>3 Modos</b></div>
+                        <div class="spec-item">✅ Faros: <b>Full LED</b></div>
+                        <div class="spec-item">✅ Techo: <b>Solar Corredizo</b></div>
+                        <div class="spec-item">✅ Aire: <b>Bi-Zona</b></div>
+                        <div class="spec-item">✅ Pantalla: <b>9" Android/Apple</b></div>
+                    </div>
+                    <p style="font-size:12px; color:#777; margin-top:15px;">Equipamiento extra: Asientos de cuero, levas al volante (Paddle Shifts), cargador inalámbrico y luces ambientales multicolor.</p>
+                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la KGM Torres" class="btn-wa">Reservar Test Drive</a>
+                </div>
+                <div class="panel-img">
+                    <img src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-hero.webp" style="width:100%; border-radius:15px; filter: grayscale(1);">
+                </div>
+            </div>
         </div>
 
         <div id="info-gx3" class="info-panel">
             <div class="panel-flex">
                 <div class="panel-text">
                     <h2 style="color: var(--geely-blue); margin-top:0;">Geely GX3 PRO</h2>
-                    <p><b>Elegí tu color:</b></p>
-                    <div class="color-selector">
-                        <div class="dot" style="background: #ffffff;" title="Blanco" onclick="changeImg('img-gx3', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp')"></div>
-                        <div class="dot" style="background: #e63946;" title="Rojo" onclick="changeImg('img-gx3', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-01.webp')"></div>
-                        <div class="dot" style="background: #2b5d95;" title="Azul" onclick="changeImg('img-gx3', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-02.webp')"></div>
-                        <div class="dot" style="background: #4a4a4a;" title="Gris" onclick="changeImg('img-gx3', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-03.webp')"></div>
-                    </div>
+                    <p>La SUV compacta líder. Disponible en varios colores.</p>
                     <div class="specs-grid">
                         <div class="spec-item">Motor: <b>1.5L MPI</b></div>
                         <div class="spec-item">Potencia: <b>102 HP</b></div>
-                        <div class="spec-item">Caja: <b>Automática 8 Vel.</b></div>
-                        <div class="spec-item">Tracción: <b>Delantera</b></div>
                     </div>
-                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la Geely GX3 Pro" class="btn-wa">Consultar Financiación</a>
+                    <a href="https://wa.me/595971723658?text=Info GX3" class="btn-wa">Más información</a>
                 </div>
                 <div class="panel-img">
-                    <img id="img-gx3" src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp" style="width:100%; transition: 0.3s;">
-                </div>
-            </div>
-        </div>
-
-        <div id="info-tucson" class="info-panel">
-            <div class="panel-flex">
-                <div class="panel-text">
-                    <h2 style="color: var(--hyundai-navy); margin-top:0;">New Tucson HEV Limited</h2>
-                    <p><b>Elegí tu color:</b></p>
-                    <div class="color-selector">
-                        <div class="dot" style="background: #d1d1d1;" title="Amazon Grey" onclick="changeImg('img-tucson', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-hero.webp')"></div>
-                        <div class="dot" style="background: #fdfdfd;" title="White Cream" onclick="changeImg('img-tucson', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-hero.webp')"></div>
-                        <div class="dot" style="background: #111;" title="Phantom Black" onclick="changeImg('img-tucson', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-hero.webp')"></div>
-                    </div>
-                    <div class="specs-grid">
-                        <div class="spec-item">Motor: <b>1.6 Turbo HEV</b></div>
-                        <div class="spec-item">Potencia: <b>230 PS</b></div>
-                        <div class="spec-item">Transmisión: <b>AT 6 Velocidades</b></div>
-                        <div class="spec-item">Tracción: <b>Delantera</b></div>
-                        <div class="spec-item">Llantas: <b>R19 Diamantadas</b></div>
-                        <div class="spec-item">Maletero: <b>539 L</b></div>
-                    </div>
-                    <p style="margin-top:20px; font-size:12px; color:#666;">▪ 6 Airbags ▪ Cámara 360° ▪ SmartSense ▪ Techo Panorámico ▪ Maletero Eléctrico</p>
-                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la Tucson Hybrid" class="btn-wa">Hablar con Asesora</a>
-                </div>
-                <div class="panel-img">
-                    <img id="img-tucson" src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-hero.webp" style="width:100%; border-radius:15px; filter: hue-rotate(160deg) brightness(0.7);">
-                    <p style="font-size:11px; color:#999; margin-top:10px;">*Garantía de batería: 8 años o 160,000 km</p>
+                    <img src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp" style="width:100%;">
                 </div>
             </div>
         </div>
@@ -161,9 +183,8 @@
 </section>
 
 <footer>
-    <p><strong>Brenda Gimenez</strong> - Asesora Especialista Automotor S.A.</p>
-    <p>  Sucursal Paseo La Galería, Nivel 1. Asuncion.</p>
-    <p>WhatsApp: +595 971 723 658</p>
+    <p><strong>Brenda Gimenez</strong> - Asesora Especialista en Automotor S.A.</p>
+    <p>📍 Paseo La Galería, Nivel 1 - Cel: +595 971 723 658</p>
 </footer>
 
 <script>
@@ -171,26 +192,14 @@
         const panels = document.querySelectorAll('.info-panel');
         const target = document.getElementById(id);
         const isOpen = target.classList.contains('active');
-
         panels.forEach(p => p.classList.remove('active'));
-
         if (!isOpen) {
             target.classList.add('active');
-            setTimeout(() => {
-                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
+            setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
         }
-    }
-
-    function changeImg(imgId, url) {
-        const img = document.getElementById(imgId);
-        img.style.opacity = '0.3';
-        setTimeout(() => {
-            img.src = url;
-            img.style.opacity = '1';
-        }, 200);
     }
 </script>
 
 </body>
 </html>
+
