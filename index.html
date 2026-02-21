@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Automotor | Brenda Gimenez</title>
+    <title>Brenda Gimenez | Catálogo Automotor</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,6 +14,7 @@
 
         body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: var(--dark-blue); scroll-behavior: smooth; overflow-x: hidden; }
 
+        /* HEADER AZUL PREMIUM */
         header {
             position: fixed; top: 0; width: 100%; height: 75px;
             background: var(--geely-blue);
@@ -25,17 +26,16 @@
         }
         .brand-name { color: white; font-weight: 700; letter-spacing: 1px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 15px; }
 
+        /* CAROUSEL DE MARCAS (SIN #) */
         .brand-carousel {
             background: #fff; padding: 15px 0; margin-top: 75px; 
             overflow: hidden; border-bottom: 1px solid #eee;
         }
         .brand-track { display: flex; width: calc(200px * 12); animation: scroll 25s linear infinite; }
-        .brand-logo { 
-            width: 200px; text-align: center; font-weight: 700; font-size: 14px; 
-            text-transform: uppercase; color: #555;
-        }
+        .brand-logo { width: 200px; text-align: center; font-weight: 700; font-size: 14px; text-transform: uppercase; color: #555; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 6)); } }
 
+        /* GRID */
         .section-catalog { padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
         .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
@@ -46,14 +46,12 @@
         .car-card:hover { border-color: var(--geely-blue); transform: translateY(-5px); }
         .car-card img { width: 100%; height: auto; max-height: 180px; object-fit: contain; margin-bottom: 15px; }
 
+        /* PANEL DESPLEGABLE */
         .info-panel {
             display: none; grid-column: 1 / -1; background: var(--light-bg);
             border-radius: 20px; padding: 40px; margin-top: 20px; border: 1px solid #ddd;
         }
         .info-panel.active { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; animation: fadeIn 0.4s; }
-
-        .color-selector { display: flex; gap: 10px; margin: 20px 0; }
-        .dot { width: 30px; height: 30px; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
 
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
         .spec-item { padding: 6px 0; border-bottom: 1px solid #dee2e6; font-size: 13px; text-align: left; }
@@ -62,7 +60,7 @@
         .btn-wa { background: #25d366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 6px; display: inline-block; margin-top: 20px; font-weight: 700; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .info-panel.active { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .info-panel.active { grid-template-columns: 1fr; padding: 20px; } }
     </style>
 </head>
 <body>
@@ -73,7 +71,7 @@
             <img src="https://geely.com.do/wp-content/uploads/2025/03/logotipo.svg" style="height: 22px; filter: brightness(0) invert(1);">
             <span class="brand-name">BRENDA GIMENEZ</span>
         </div>
-        <a href="https://wa.me/595971723658" style="background:white; color:var(--geely-blue); text-decoration:none; padding: 8px 15px; border-radius:4px; font-weight:700;">WHATSAPP</a>
+        <a href="https://wa.me/595971723658" style="background:white; color:var(--geely-blue); text-decoration:none; padding: 8px 15px; border-radius:4px; font-weight:700; font-size:12px;">WHATSAPP</a>
     </div>
 </header>
 
@@ -92,90 +90,89 @@
             <p style="color: #666; font-size: 13px;">Explorar colores y ficha ↓</p>
         </div>
 
+        <div class="car-card" onclick="toggleInfo('info-creta')">
+            <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Creta/800x430-10.png">
+            <h3>NEW CRETA PLATINUM</h3>
+            <p style="color: #666; font-size: 13px;">Siente lo que nunca has sentido ↓</p>
+        </div>
+
         <div class="car-card" onclick="toggleInfo('info-tucson')">
             <img src="https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/tucson-hybrid/nx4-he-fl-tucson-hybrid-side-view.png">
             <h3>HYUNDAI TUCSON HEV</h3>
             <p style="color: #666; font-size: 13px;">Explorar colores y ficha ↓</p>
         </div>
 
-        <div class="car-card" onclick="toggleInfo('info-creta')">
-            <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Creta/800x430-10.png">
-            <h3>NEW CRETA PLATINUM</h3>
-            <p style="color: #666; font-size: 13px;">Ver equipamiento completo ↓</p>
-        </div>
-
-        <div id="info-gx3" class="info-panel">
+        <div id="info-creta" class="info-panel">
             <div class="panel-flex">
                 <div class="panel-text">
-                    <h2 style="color: var(--geely-blue);">Geely GX3 Pro AT</h2>
-                    <div class="color-selector">
-                        <div class="dot" style="background: #ffffff;" onclick="changeColor('gx3-img', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp')"></div>
-                        <div class="dot" style="background: #e63946;" onclick="changeColor('gx3-img', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-01.webp')"></div>
-                    </div>
+                    <h2 style="color: var(--geely-blue); margin-top:0;">New Creta Platinum 2026</h2>
+                    <p style="font-weight: 700; font-size: 22px; color: #333;">Desde $26.990 (Contado)</p>
+                    <p style="font-size: 14px; color: #555;">Imponente por fuera, innovadora por dentro. Una SUV que te da el control y te lleva más allá de tus sueños.</p>
+                    
                     <div class="specs-grid">
-                        <div class="spec-item">Motor: <b>1.5L MPI</b></div>
-                        <div class="spec-item">Transmisión: <b>CVT 8 Vel.</b></div>
+                        <div class="spec-item">Motor: <b>1.5 CC Naftero</b></div>
+                        <div class="spec-item">Cámara: <b>360° con Guías</b></div>
+                        <div class="spec-item">Seguridad: <b>6 Airbags + ADAS</b></div>
+                        <div class="spec-item">Monitor: <b>Punto Ciego (BVM)</b></div>
+                        <div class="spec-item">Llantas: <b>17" Corte Diamante</b></div>
+                        <div class="spec-item">Modos: <b>Normal, Eco, Sport</b></div>
                     </div>
-                    <a href="https://wa.me/595971723658?text=Info Geely GX3" class="btn-wa">COTIZAR AHORA</a>
+                    <p style="font-size: 11px; margin-top: 15px; color: #777;">Equipamiento destacado: Smart Key, Freno Autohold, Asistente de colisión frontal (FCA), Luces LED y Cargador Inalámbrico.</p>
+                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la New Creta Platinum" class="btn-wa">CONSULTAR FINANCIACIÓN</a>
                 </div>
-                <div class="panel-img"><img id="gx3-img" src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp" style="width:100%;"></div>
+                <div class="panel-img">
+                    <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Creta/800x430-10.png" style="width:100%; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+                </div>
             </div>
         </div>
 
         <div id="info-tucson" class="info-panel">
             <div class="panel-flex">
                 <div class="panel-text">
-                    <h2 style="color: var(--geely-blue);">Tucson Hybrid HEV Limited</h2>
-                    <div class="color-selector">
-                        <div class="dot" style="background: #E5E5E5;" title="Plata" onclick="applyColorFilter('tucson-img', 'plata')"></div>
-                        <div class="dot" style="background: #FFFFFF;" title="Blanco" onclick="applyColorFilter('tucson-img', 'blanco')"></div>
-                        <div class="dot" style="background: #4A4A4A;" title="Gris" onclick="applyColorFilter('tucson-img', 'gris')"></div>
-                        <div class="dot" style="background: #000000;" title="Negro" onclick="applyColorFilter('tucson-img', 'negro')"></div>
-                    </div>
+                    <h2 style="color: var(--geely-blue); margin-top:0;">Tucson Hybrid HEV Limited</h2>
                     <div class="specs-grid">
                         <div class="spec-item">Motor: <b>1.6 Turbo HEV</b></div>
                         <div class="spec-item">Potencia: <b>230 PS</b></div>
-                        <div class="spec-item">Llantas: <b>R19 Diamantadas</b></div>
+                        <div class="spec-item">Garantía Batería: <b>8 años / 160k km</b></div>
                     </div>
-                    <a href="https://wa.me/595971723658?text=Info Tucson Hybrid" class="btn-wa">CONSULTAR ASESOR</a>
+                    <a href="https://wa.me/595971723658?text=Info Tucson Hybrid" class="btn-wa">HABLAR CON ASESORA</a>
                 </div>
-                <div class="panel-img"><img id="tucson-img" src="https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/tucson-hybrid/nx4-he-fl-tucson-hybrid-side-view.png" style="width:100%; transition: 0.3s;"></div>
+                <div class="panel-img">
+                    <img src="https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/tucson-hybrid/nx4-he-fl-tucson-hybrid-side-view.png" style="width:100%;">
+                </div>
             </div>
         </div>
 
-        <div id="info-creta" class="info-panel">
+        <div id="info-gx3" class="info-panel">
             <div class="panel-flex">
                 <div class="panel-text">
-                    <h2 style="color: var(--geely-blue);">New Creta Platinum</h2>
-                    <p style="font-weight: 700; font-size: 20px;">Precio: $26.990</p>
+                    <h2 style="color: var(--geely-blue); margin-top:0;">Geely GX3 Pro AT</h2>
                     <div class="specs-grid">
-                        <div class="spec-item">Motor: <b>1.5 CC Naftero</b></div>
-                        <div class="spec-item">Cámara: <b>360° Vision</b></div>
-                        <div class="spec-item">Pantalla: <b>Táctil 10"</b></div>
-                        <div class="spec-item">Seguridad: <b>6 Airbags + SmartSense</b></div>
+                        <div class="spec-item">Motor: <b>1.5L MPI</b></div>
+                        <div class="spec-item">Caja: <b>CVT 8 Vel.</b></div>
                     </div>
-                    <p style="font-size: 11px; margin-top: 15px;">Incluye: BVM (Monitor punto ciego), FCA (Colisión frontal), LKA (Carril), Autohold, Techo solar y más.</p>
-                    <a href="https://wa.me/595971723658?text=Info New Creta Platinum" class="btn-wa">MÁS INFORMACIÓN</a>
+                    <a href="https://wa.me/595971723658?text=Info Geely GX3" class="btn-wa">COTIZAR AHORA</a>
                 </div>
-                <div class="panel-img"><img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Creta/800x430-10.png" style="width:100%;"></div>
+                <div class="panel-img">
+                    <img src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp" style="width:100%;">
+                </div>
             </div>
         </div>
+
     </div>
 </section>
+
+<footer>
+    <p><strong>Brenda Gimenez</strong> | Automotor S.A. Paraguay</p>
+    <p>📍 Paseo La Galería - Nivel 1</p>
+</footer>
 
 <script>
     function toggleInfo(id) {
         document.querySelectorAll('.info-panel').forEach(p => p.style.display = 'none');
-        document.getElementById(id).style.display = 'grid';
-        setTimeout(() => document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
-    }
-    function changeColor(imgId, url) { document.getElementById(imgId).src = url; }
-    function applyColorFilter(imgId, color) {
-        const img = document.getElementById(imgId);
-        if(color === 'gris') img.style.filter = 'brightness(0.5) grayscale(0.5)';
-        else if(color === 'negro') img.style.filter = 'brightness(0.2)';
-        else if(color === 'plata') img.style.filter = 'brightness(0.8) contrast(1.1)';
-        else img.style.filter = 'none';
+        const target = document.getElementById(id);
+        target.style.display = 'grid';
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
     }
 </script>
 </body>
