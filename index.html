@@ -142,39 +142,36 @@ footer a {
     }
     /* DETECCIÓN AUTOMÁTICA DE MODO OSCURO */
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #06131F; /* Fondo azul oscuro profundo */
-        color: #f8f9fa; /* Texto claro */
+    /* ... (tus otros estilos de modo oscuro) ... */
+
+    /* CORRECCIÓN PARA FILTROS DE MARCAS */
+    .filter-container {
+        background-color: #0b1e2e;
+        padding: 10px;
+        border-radius: 8px;
     }
 
-    .car-card, .service-package, .benefit-card {
-        background-color: #0b1e2e; /* Fondo de tarjetas más oscuro */
-        border-color: #1a3a5a;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    .brand-filter-btn {
+        background-color: #1a3a5a !important; /* Fondo oscuro para el botón */
+        color: #ffffff !important; /* Texto blanco */
+        border: 1px solid #4da3ff !important;
     }
 
-    .panel-text h2, .model-title, .distribuidor {
-        color: #4da3ff; /* Un azul más vibrante para que resalte en negro */
+    .brand-filter-btn.active {
+        background-color: #006BB7 !important; /* Azul intenso cuando está seleccionado */
+        box-shadow: 0 0 10px rgba(77, 163, 255, 0.4);
     }
 
-    .spec-item {
-        border-bottom: 1px solid #1a3a5a;
-        color: #ccc;
+    /* CORRECCIÓN PARA NOMBRES DE MARCAS Y TÍTULOS */
+    .brand-title, .section-title, h1, h3 {
+        color: #ffffff !important;
     }
 
-    .spec-item b {
-        color: #fff;
-    }
-
-    footer {
-        background-color: #06131F;
-        border-top: 1px solid #1a3a5a;
-        color: #aaa;
-    }
-
-    /* Ajuste para que el texto sobre fondo gris no se pierda */
-    p, span {
-        color: #ddd;
+    /* Si usas un select o dropdown para marcas */
+    select {
+        background-color: #1a3a5a;
+        color: white;
+        border: 1px solid #4da3ff;
     }
 }
 </style>
@@ -328,6 +325,7 @@ footer a {
     </script>
 
 </body>
+
 
 
 
