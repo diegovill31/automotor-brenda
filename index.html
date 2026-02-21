@@ -178,19 +178,22 @@
                     <span style="background: #06131F; color: white; font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 700;">SUV URBANA</span>
                 </div>
                 <h2 style="color: #06131F; margin-top: 0; font-size: 32px; font-weight: 700;">GX3 Pro 2026</h2>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">Selecciona tu color:</p>
-                <div class="color-selector" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <div class="dot" style="background: #004D95;" onclick="changeGX3Color(this, 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-02.webp')"></div>
-                    <div class="dot active" style="background: #F9F9FA; border-color: #06131F;" onclick="changeGX3Color(this, 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp')"></div>
-                </div>
+              <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">Selecciona tu color:</p>
+<div class="color-selector" style="display: flex; gap: 10px; margin-bottom: 20px;">
+    <div class="dot" style="background: #A31B22; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid var(--bg-card); box-shadow: 0 0 5px var(--shadow);" onclick="changeGX3Color(this, 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-01.webp')"></div>
+    <div class="dot" style="background: #004D95; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid var(--bg-card); box-shadow: 0 0 5px var(--shadow);" onclick="changeGX3Color(this, 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-02.webp')"></div>
+    <div class="dot" style="background: #7D7E81; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid var(--bg-card); box-shadow: 0 0 5px var(--shadow);" onclick="changeGX3Color(this, 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-03.webp')"></div>
+    <div class="dot active" style="background: #F9F9FA; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid #06131F; box-shadow: 0 0 5px var(--shadow);" onclick="changeGX3Color(this, 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp')"></div>
+</div>
                 <div class="specs-grid">
                     <div class="spec-item">Motor: <b>1.5 L 4 Cilindros</b></div>
                     <div class="spec-item">Potencia: <b>102 hp</b></div>
                 </div>
-                <a href="fichas/GX3PRO-FICHA-TECNICA.pdf" target="_blank" class="btn-pdf" style="border-color: #06131F; color: #06131F;">
-                    <span class="material-symbols-outlined" style="font-size: 18px;">description</span> DESCARGAR BROCHURE
+                               <a href="fichas/GX3PRO-FICHA-TECNICA.pdf" target="_blank" class="btn-pdf">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">description</span>
+                    DESCARGAR FICHA TÉCNICA
                 </a>
-                <a href="https://wa.me/595971723658?text=Info Geely GX3 Pro" class="btn-wa" style="width: 100%;">CONSULTAR AHORA</a>
+                <a href="https://wa.me/595971723658?text=Hola Brenda, quiero mas Info de Geely GX3 Pro" class="btn-wa" style="width: 100%;">CONSULTAR AHORA</a>
             </div>
             <div class="panel-img">
                 <img id="main-gx3" src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp" alt="Geely GX3 Pro">
@@ -246,12 +249,28 @@
         element.style.borderColor = 'var(--brand-blue)';
     }
 
-    function changeGX3Color(element, imgSrc) {
-        const img = document.getElementById('main-gx3');
-        img.src = imgSrc;
-        element.parentElement.querySelectorAll('.dot').forEach(d => d.style.borderColor = 'var(--bg-card)');
+  function changeGX3Color(element, imgSrc) {
+    const img = document.getElementById('main-gx3');
+    if (img) {
+        // Efecto de desvanecimiento
+        img.style.opacity = '0';
+        
+        setTimeout(() => {
+            img.src = imgSrc;
+            img.style.opacity = '1';
+        }, 200);
+
+        // Limpiar bordes de todos los puntos de este selector
+        element.parentElement.querySelectorAll('.dot').forEach(dot => {
+            dot.style.borderColor = 'var(--bg-card)';
+            dot.classList.remove('active');
+        });
+
+        // Activar el seleccionado con el azul oscuro de Geely
         element.style.borderColor = '#06131F';
+        element.classList.add('active');
     }
+}
     function filterBrand(brand) {
     const items = document.querySelectorAll('.filter-item');
     items.forEach(item => {
@@ -266,4 +285,5 @@
 
 </body>
 </html>
+
 
