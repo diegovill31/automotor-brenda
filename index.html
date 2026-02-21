@@ -222,6 +222,18 @@
     </footer>
 
     <script>
+        function rotateCreta(url) {
+        const img = document.getElementById('creta-slider');
+        if (img) {
+            img.style.opacity = '0'; // Efecto de salida
+            setTimeout(() => {
+                img.src = url;
+                img.style.opacity = '1'; // Efecto de entrada
+            }, 200);
+        } else {
+            console.error("No se encontró el elemento con ID 'creta-slider'");
+        }
+    }
         function changeTucsonColor(element, url) {
             const img = document.getElementById('main-tucson');
             if (img) {
@@ -241,4 +253,5 @@
     </script>
 
 </body>
+
 
