@@ -140,40 +140,64 @@ footer a {
         .btn-wa { width: 100%; box-sizing: border-box; }
         .brand-carousel { margin-top: 80px; }
     }
-    /* DETECCIÓN AUTOMÁTICA DE MODO OSCURO */
+  /* FUERZA EL MODO OSCURO */
 @media (prefers-color-scheme: dark) {
-    /* ... (tus otros estilos de modo oscuro) ... */
+    :root {
+        color-scheme: dark;
+    }
 
-    /* CORRECCIÓN PARA FILTROS DE MARCAS */
-    .filter-container {
-        background-color: #0b1e2e;
-        padding: 10px;
-        border-radius: 8px;
+    body {
+        background-color: #06131F !important;
+        color: #f8f9fa !important;
+    }
+
+    /* TARJETAS Y CONTENEDORES */
+    .car-card, .service-package, .benefit-card, .version-info {
+        background-color: #0b1e2e !important;
+        border: 1px solid #1a3a5a !important;
+        color: #f8f9fa !important;
+    }
+
+    /* FILTROS DE MARCAS (Aquí estaba el problema) */
+    .filter-container, .brand-filter-wrapper {
+        background-color: #06131F !important;
     }
 
     .brand-filter-btn {
-        background-color: #1a3a5a !important; /* Fondo oscuro para el botón */
-        color: #ffffff !important; /* Texto blanco */
+        background-color: #1a3a5a !important;
+        color: #ffffff !important;
         border: 1px solid #4da3ff !important;
     }
 
-    .brand-filter-btn.active {
-        background-color: #006BB7 !important; /* Azul intenso cuando está seleccionado */
-        box-shadow: 0 0 10px rgba(77, 163, 255, 0.4);
+    .brand-filter-btn:hover {
+        background-color: #244a70 !important;
     }
 
-    /* CORRECCIÓN PARA NOMBRES DE MARCAS Y TÍTULOS */
-    .brand-title, .section-title, h1, h3 {
+    /* TEXTOS Y TÍTULOS */
+    h1, h2, h3, .model-title, .brand-label {
         color: #ffffff !important;
     }
 
-    /* Si usas un select o dropdown para marcas */
-    select {
-        background-color: #1a3a5a;
-        color: white;
-        border: 1px solid #4da3ff;
+    p, span, li {
+        color: #cccccc !important;
     }
-}
+
+    /* ESPECIFICACIONES TÉCNICAS */
+    .spec-item {
+        border-bottom: 1px solid #1a3a5a !important;
+        color: #bbbbbb !important;
+    }
+
+    .spec-item b {
+        color: #4da3ff !important; /* Azul claro para resaltar en fondo oscuro */
+    }
+
+    /* FOOTER */
+    footer {
+        background-color: #06131F !important;
+        border-top: 1px solid #1a3a5a !important;
+    }
+} 
 </style>
 
 </head>
@@ -325,6 +349,7 @@ footer a {
     </script>
 
 </body>
+
 
 
 
