@@ -250,36 +250,45 @@ img {
         
         <div id="hyundai">
             <h3 style="text-align: center; color: #888; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-size: 14px;">Línea Hyundai</h3>
+<div class="car-card">
+    <div class="panel-text">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <h1 style="font-size: 14px; color: var(--text-muted); margin: 0; text-transform: uppercase;">Hyundai</h1>
+            <span style="background: var(--brand-blue); color: white; font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 700;">HÍBRIDA</span>
+        </div>
+        <h2 style="color: var(--brand-blue); margin-top: 0; font-size: 32px; font-weight: 700;">New Tucson HEV 2026</h2>
+        
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">Selecciona tu color:</p>
+        <div class="color-selector" style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <div class="dot" style="background: #D3D5DB; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid var(--bg-card); box-shadow: 0 0 5px var(--shadow);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/COLOR2-TUCSON.png')"></div>
+            <div class="dot active" style="background: #F9F9FA; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid var(--brand-blue); box-shadow: 0 0 5px var(--shadow);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/BLANCO-COLORES-TUCSON.png')"></div>
+            <div class="dot" style="background: #292A2C; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid var(--bg-card); box-shadow: 0 0 5px var(--shadow);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/GRIS-OSCURO-COLORES-TUCSON.png')"></div>
+            <div class="dot" style="background: #121214; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid var(--bg-card); box-shadow: 0 0 5px var(--shadow);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/NEGRO-COLORES-TUCSON.png')"></div>
+        </div>
 
-            <div class="car-card">
-                <div class="panel-text">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                        <h1 style="font-size: 14px; color: #888; margin: 0; text-transform: uppercase;">Hyundai</h1>
-                        <span style="background: #006BB7; color: white; font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 700;">HÍBRIDA</span>
-                    </div>
-                    <h2 style="color: #006BB7; margin-top: 0; font-size: 32px; font-weight: 700;">New Tucson HEV 2026</h2>
-                    
-                    <p style="color: #666; font-size: 14px; margin-bottom: 10px;">Selecciona tu color:</p>
-                    <div class="color-selector" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                        <div class="dot" style="background: #D3D5DB; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/COLOR2-TUCSON.png')"></div>
-                        <div class="dot active" style="background: #F9F9FA; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid #006BB7; box-shadow: 0 0 5px rgba(0,0,0,0.2);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/BLANCO-COLORES-TUCSON.png')"></div>
-                        <div class="dot" style="background: #292A2C; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/GRIS-OSCURO-COLORES-TUCSON.png')"></div>
-                        <div class="dot" style="background: #121214; width:30px; height:30px; border-radius:50%; cursor:pointer; border:2px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2);" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/NEGRO-COLORES-TUCSON.png')"></div>
-                    </div>
+        <div class="specs-grid">
+            <div class="spec-item">Motor: <b>1.6 Turbo HEV</b></div>
+            <div class="spec-item">Potencia: <b>230 ps</b></div>
+            <div class="spec-item">Cilindrada: <b>1,598 cc</b></div>
+            <div class="spec-item">Transmisión: <b>6 AT</b></div>
+        </div>
 
-                    <div class="specs-grid">
-                        <div class="spec-item">Motor: <b>1.6 Turbo HEV</b></div>
-                        <div class="spec-item">Potencia: <b>230 ps</b></div>
-                        <div class="spec-item">Cilindrada: <b>1,598 cc</b></div>
-                        <div class="spec-item">Transmisión: <b>6 AT</b></div>
-                    </div>
-                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la Tucson" class="btn-wa">CONSULTAR AHORA</a>
-                </div>
+        <a href="fichas/Hyundai_FichaTecnica-Tucson-HIBRIDA_v2 (1).pdf" 
+           target="_blank" 
+           class="btn-pdf" 
+           style="display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--brand-blue); color: var(--brand-blue); text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 20px; font-size: 13px; transition: 0.3s;">
+            <span class="material-symbols-outlined" style="font-size: 18px;">description</span>
+            DESCARGAR FICHA TÉCNICA
+        </a>
 
-                <div class="panel-img">
-                    <img id="main-tucson" src="https://hyundai.pe/wp-content/uploads/2024/09/BLANCO-COLORES-TUCSON.png" alt="Tucson HEV" style="width: 100%; transition: 0.3s;">
-                </div>
-            </div>
+        <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la Tucson" class="btn-wa" style="width: 100%; margin-top: 10px;">CONSULTAR AHORA</a>
+    </div>
+
+    <div class="panel-img">
+        <img id="main-tucson" src="https://hyundai.pe/wp-content/uploads/2024/09/BLANCO-COLORES-TUCSON.png" alt="Tucson HEV" style="width: 100%; transition: 0.3s;">
+    </div>
+</div>
+
         <div class="car-card" style="margin-top: 30px;">
     <div class="panel-text">
         <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
@@ -369,6 +378,7 @@ img {
     </script>
 
 </body>
+
 
 
 
