@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geely GX3 Pro 2026 | Brenda Gimenez</title>
+    <title>Brenda Gimenez | Automotor Paseo La Galería</title>
     <style>
         :root {
             --apple-black: #1d1d1f;
@@ -13,40 +13,43 @@
         }
 
         body {
-            font-family: 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            background-color: #ffffff;
+            background-color: #fff;
             color: var(--apple-black);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Navbar estilo Apple */
+        /* Nav Estilo Glassmorphism */
         nav {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: fixed;
             top: 0;
             width: 100%;
+            height: 52px;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         nav a {
             color: var(--apple-black);
             text-decoration: none;
             font-size: 12px;
-            margin: 0 20px;
+            margin: 0 15px;
+            letter-spacing: 0.5px;
             opacity: 0.8;
-            transition: 0.3s;
+            transition: opacity 0.3s;
         }
 
-        /* Hero Section */
+        nav a:hover { opacity: 1; }
+
+        /* Hero Section - El impacto visual */
         .hero {
             height: 100vh;
             display: flex;
@@ -54,155 +57,175 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 50px;
+            padding: 0 20px;
         }
 
-        .hero h2 { font-size: 21px; margin: 0; font-weight: 600; }
-        .hero h1 { font-size: 56px; margin: 0; font-weight: 700; letter-spacing: -1px; }
-        .hero p { font-size: 24px; margin: 10px 0; font-weight: 400; }
-        
+        .hero h2 { font-size: 24px; font-weight: 600; margin-bottom: 0; color: #bf4800; } /* Color acento tipo Apple */
+        .hero h1 { font-size: clamp(40px, 8vw, 80px); line-height: 1.1; font-weight: 700; letter-spacing: -2px; margin: 10px 0; }
+        .hero p { font-size: clamp(18px, 3vw, 26px); color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; }
+
         .hero-img {
-            width: 80%;
-            max-width: 900px;
-            margin-top: 40px;
-            transition: transform 1s ease-out;
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            object-fit: contain;
+            margin-top: 20px;
         }
 
-        /* Secciones de Contenido */
-        .section {
-            padding: 100px 20px;
-            text-align: center;
-            background: var(--apple-gray);
-            margin: 20px;
-            border-radius: 30px;
-        }
-
-        .grid-apple {
+        /* Bento Grid - Las Marcas */
+        .section-title { text-align: center; font-size: 48px; font-weight: 700; margin: 100px 0 50px; }
+        
+        .bento-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 100px;
+            padding: 0 20px;
         }
 
-        .bento-box {
-            background: white;
-            padding: 50px;
+        .bento-item {
+            background: var(--apple-gray);
             border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            transition: transform 0.4s ease;
         }
 
-        .bento-box h3 { font-size: 32px; margin-bottom: 10px; }
-        .bento-box p { color: var(--text-secondary); font-size: 19px; max-width: 300px; }
+        .bento-item:hover { transform: scale(1.02); }
+        .bento-item h3 { font-size: 32px; margin: 0 0 10px; }
+        .bento-item p { color: var(--text-secondary); font-size: 18px; margin-bottom: 20px; }
+        .bento-item img { width: 100%; height: 250px; object-fit: contain; margin-top: auto; }
 
-        /* Botones Apple */
-        .cta-group { margin-top: 20px; }
-        .btn-link {
-            color: var(--apple-blue);
-            text-decoration: none;
-            font-size: 19px;
-            margin: 0 15px;
-        }
-        .btn-link:hover { text-decoration: underline; }
-
-        .btn-buy {
+        /* Botones Estilo Apple */
+        .btn-primary {
             background: var(--apple-blue);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 12px 24px;
+            border-radius: 980px;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
+            font-weight: 500;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover { background: #0077ed; }
+
+        .btn-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 2000;
+            text-decoration: none;
+            font-size: 24px;
         }
 
         /* Footer */
         footer {
-            padding: 60px 20px;
+            background: var(--apple-gray);
+            padding: 80px 20px;
+            text-align: left;
+        }
+
+        .footer-content {
             max-width: 1000px;
             margin: 0 auto;
             color: var(--text-secondary);
             font-size: 12px;
-            line-height: 1.6;
         }
 
         @media (max-width: 768px) {
-            .grid-apple { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 40px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 48px; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#">Geely</a>
-    <a href="#">Modelos</a>
-    <a href="#">Especificaciones</a>
-    <a href="https://wa.me/tu-numero" class="btn-buy">Contactar Brenda</a>
+    <a href="#inicio">Inicio</a>
+    <a href="#marcas">Marcas</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/tu-numero" class="btn-primary" style="padding: 5px 15px; font-size: 11px;">Escribirme</a>
 </nav>
 
-<section class="hero">
-    <h2>Nueva</h2>
-    <h1>GX3 PRO AT</h1>
-    <p>Pequeña por fuera. Inmensa por dentro.</p>
-    <div class="cta-group">
-        <a href="#" class="btn-link">Más información ></a>
-        <a href="#" class="btn-link">Ver precios ></a>
+<section class="hero" id="inicio">
+    <h2>Nueva Geely</h2>
+    <h1>GX3 PRO 2026.</h1>
+    <p>La SUV diseñada para tu ritmo en la ciudad.</p>
+    <div>
+        <a href="https://wa.me/tu-numero" class="btn-primary">Reservar Test Drive</a>
     </div>
-    <img src="https://images.unsplash.com/photo-1606148632349-564e8c393751?auto=format&fit=crop&q=80&w=800" alt="Geely GX3 Pro" class="hero-img">
+    <img src="https://www.geely.com.py/uploads/modelos/gx3-pro/exterior/color-blanco.jpg" alt="Geely GX3 Pro" class="hero-img">
 </section>
 
-<div class="container">
-    <div class="grid-apple">
-        <div class="bento-box">
-            <h3>Pura Eficiencia.</h3>
-            <p>Motor 1.5L con caja automática de 8 velocidades simuladas para una suavidad increíble.</p>
-        </div>
-        
-        <div class="bento-box">
-            <h3>Confort de Clase S.</h3>
-            <p>Asientos de ecocuero y techo solar para elevar tu experiencia de manejo.</p>
-        </div>
+<h2 class="section-title" id="marcas">Elegí tu próximo nivel.</h2>
 
-        <div class="bento-box" style="grid-column: span 1; background: #000; color: white;">
-            <h3 style="color: white;">Pantalla de 8".</h3>
-            <p style="color: #86868b;">Conectividad total para que tu música y mapas nunca se detengan.</p>
+<div class="bento-grid">
+    <div class="bento-item">
+        <div>
+            <h3>Hyundai HB20</h3>
+            <p>Confiabilidad y estilo coreano.</p>
         </div>
+        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=400" alt="Hyundai">
+    </div>
 
-        <div class="bento-box">
-            <h3>Seguridad de serie.</h3>
-            <p>Frenos a disco en las 4 ruedas y control de estabilidad (ESP).</p>
+    <div class="bento-item" style="background: #000; color: #fff;">
+        <div>
+            <h3>Isuzu D-MAX</h3>
+            <p style="color: #86868b;">La pick-up que no conoce límites.</p>
         </div>
+        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=400" alt="Isuzu">
+    </div>
+
+    <div class="bento-item">
+        <div>
+            <h3>Lynk & Co</h3>
+            <p>Movilidad europea premium.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=400" alt="LynkCo">
+    </div>
+
+    <div class="bento-item" style="background: #fff; border: 1px solid #eee;">
+        <div>
+            <h3>Maserati</h3>
+            <p>El arte italiano en movimiento.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=400" alt="Maserati">
     </div>
 </div>
 
-<section class="section">
-    <h2 style="font-size: 48px; margin-bottom: 20px;">Disponible en Paseo La Galería</h2>
-    <p style="max-width: 600px; margin: 0 auto; font-size: 21px; color: var(--text-secondary);">
-        Vení a conocer la SUV que está redefiniendo la ciudad. Brenda Gimenez te espera para un Test Drive exclusivo.
-    </p>
-    <br><br>
-    <a href="https://wa.me/tu-numero" class="btn-buy" style="font-size: 21px; padding: 15px 30px;">Reservar la mía</a>
+<section style="text-align: center; padding: 100px 20px;">
+    <h2 style="font-size: 40px;">📍 Sucursal Paseo La Galería</h2>
+    <p style="color: var(--text-secondary); font-size: 21px;">Nivel 1. Atención personalizada de lunes a domingo.</p>
 </section>
 
-<footer>
-    <p>1. Los precios mencionados pueden variar según la financiación disponible en Automotor S.A.</p>
-    <p>2. La disponibilidad de colores está sujeta a stock en el Showroom de Paseo La Galería.</p>
-    <hr style="border: 0; border-top: 1px solid #d2d2d7; margin: 20px 0;">
-    <p>Copyright © 2026 Brenda Gimenez - Asesora Automotor. Todos los derechos reservados.</p>
+<footer id="contacto">
+    <div class="footer-content">
+        <p><strong>Brenda Gimenez</strong> | Asesora Comercial Automotor S.A.</p>
+        <p>Precios sujetos a variaciones según Plan Familiar o Financiación Bancaria. Imágenes con fines ilustrativos.</p>
+        <hr style="border: 0; border-top: 1px solid #d2d2d7; margin: 20px 0;">
+        <p>Modelos disponibles: #Hyundai #Isuzu #Geely #KGM #Maserati #LynkCo</p>
+        <p>Copyright © 2026 Automotor Paraguay.</p>
+    </div>
 </footer>
 
-<script>
-    // Pequeño efecto de zoom al cargar
-    window.onload = () => {
-        document.querySelector('.hero-img').style.transform = 'scale(1.1)';
-        setTimeout(() => {
-            document.querySelector('.hero-img').style.transform = 'scale(1)';
-        }, 500);
-    };
-</script>
+<a href="https://wa.me/tu-numero" class="btn-wa">
+   <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.404.832 2.91 1.272 4.453 1.273 4.958 0 8.992-4.035 8.995-8.995.002-2.403-.933-4.661-2.634-6.363s-3.96-2.636-6.363-2.636c-4.96 0-8.995 4.036-8.997 8.996-.001 1.63.43 3.218 1.248 4.615l-1.009 3.687 3.772-.989z"/></svg>
+</a>
 
 </body>
 </html>
