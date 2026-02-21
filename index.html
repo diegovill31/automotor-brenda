@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brenda Gimenez | Catálogo Automotor</title>
+    <title>Brenda Gimenez | Automotor Paraguay</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,11 +12,10 @@
             --light-bg: #f8f9fa;
         }
 
-        body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: var(--dark-blue); scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: var(--dark-blue); scroll-behavior: smooth; }
 
-        /* HEADER AZUL PREMIUM */
         header {
-            position: fixed; top: 0; width: 100%; height: 75px;
+            position: fixed; top: 0; width: 100%; height: 80px;
             background: var(--geely-blue);
             display: flex; align-items: center; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -24,42 +23,35 @@
             max-width: 1200px; width: 100%; margin: 0 auto; display: flex; 
             justify-content: space-between; align-items: center; padding: 0 25px;
         }
+        /* AJUSTE PARA EL LOGO DE AUTOMOTOR */
+        .logo-automotor { height: 45px; width: auto; filter: brightness(0) invert(1); }
         .brand-name { color: white; font-weight: 700; letter-spacing: 1px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 15px; }
 
-        /* CAROUSEL DE MARCAS */
-        .brand-carousel { background: #fff; padding: 15px 0; margin-top: 75px; overflow: hidden; border-bottom: 1px solid #eee; }
-        .brand-track { display: flex; width: calc(200px * 12); animation: scroll 25s linear infinite; }
-        .brand-logo { width: 200px; text-align: center; font-weight: 700; font-size: 14px; text-transform: uppercase; color: #555; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 6)); } }
-
-        /* GRID */
-        .section-catalog { padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
-        .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-
-        .car-card {
-            background: #fff; border: 1px solid #eee; border-radius: 12px; 
-            padding: 25px; text-align: center; cursor: pointer; transition: 0.3s;
-        }
-        .car-card:hover { border-color: var(--geely-blue); transform: translateY(-5px); }
-        .car-card img { width: 100%; height: auto; max-height: 180px; object-fit: contain; margin-bottom: 15px; }
-
-        /* PANEL DESPLEGABLE */
-        .info-panel {
-            display: none; grid-column: 1 / -1; background: var(--light-bg);
-            border-radius: 20px; padding: 40px; margin-top: 20px; border: 1px solid #ddd;
-        }
-        .info-panel.active { display: block; animation: fadeIn 0.4s; }
-
-        /* ESPECIFICACIONES TUCSON */
-        .specs-title { font-weight: 700; color: var(--geely-blue); border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-bottom: 15px; text-transform: uppercase; font-size: 14px; }
-        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
-        .spec-item { padding: 6px 0; border-bottom: 1px solid #dee2e6; font-size: 13px; display: flex; justify-content: space-between; }
-
-        .btn-wa { background: #25d366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 6px; display: inline-block; margin-top: 20px; font-weight: 700; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .section-catalog { padding: 130px 20px 50px; max-width: 1200px; margin: 0 auto; }
         
-        footer { background: #f0f0f0; padding: 40px; text-align: center; font-size: 13px; line-height: 1.6; }
+        .car-card {
+            background: #fff; border: 1px solid #eee; border-radius: 15px; 
+            padding: 40px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .panel-text h2 { color: var(--geely-blue); margin-top: 0; font-size: 28px; }
+        .color-selector { display: flex; gap: 15px; margin: 25px 0; align-items: center; }
+        .dot { width: 35px; height: 35px; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); transition: 0.3s; }
+        .dot:hover, .dot.active { transform: scale(1.1); border-color: var(--geely-blue); }
+
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .spec-item { padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+        .spec-item b { color: #333; }
+
+        .btn-wa { background: #25d366; color: white; text-decoration: none; padding: 15px 30px; border-radius: 8px; display: inline-block; margin-top: 30px; font-weight: 700; }
+
+        .panel-img img { width: 100%; height: auto; transition: opacity 0.4s ease; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1)); }
+
+        footer { background: #1c1b1b; color: white; padding: 50px 20px; text-align: center; margin-top: 50px; }
+        .distribuidor { color: var(--geely-blue); font-weight: 700; font-size: 16px; display: block; margin-bottom: 15px; }
+
+        @media (max-width: 768px) { .car-card { grid-template-columns: 1fr; padding: 25px; } .header-container { padding: 0 15px; } }
     </style>
 </head>
 <body>
@@ -67,72 +59,62 @@
 <header>
     <div class="header-container">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="https://geely.com.do/wp-content/uploads/2025/03/logotipo.svg" style="height: 22px; filter: brightness(0) invert(1);">
+            <img src="https://raw.githubusercontent.com/diegovill31/hyundai-web/main/AUTOMOTOR%20LOGO.png" class="logo-automotor" alt="Automotor Logo">
             <span class="brand-name">BRENDA GIMENEZ</span>
         </div>
-        <a href="https://wa.me/595971723658" style="background:white; color:var(--geely-blue); text-decoration:none; padding: 8px 15px; border-radius:4px; font-weight:700; font-size:12px;">WHATSAPP</a>
+        <a href="https://wa.me/595971723658" style="background:white; color:var(--geely-blue); padding: 8px 15px; border-radius:4px; font-weight:700; text-decoration:none; font-size: 12px;">WHATSAPP</a>
     </div>
 </header>
 
-<div class="brand-carousel">
-    <div class="brand-track">
-        <div class="brand-logo">Hyundai</div><div class="brand-logo">Isuzu</div><div class="brand-logo">Geely</div><div class="brand-logo">KGM</div><div class="brand-logo">Maserati</div><div class="brand-logo">Lynk&Co</div>
-        <div class="brand-logo">Hyundai</div><div class="brand-logo">Isuzu</div><div class="brand-logo">Geely</div><div class="brand-logo">KGM</div><div class="brand-logo">Maserati</div><div class="brand-logo">Lynk&Co</div>
-    </div>
-</div>
-
 <section class="section-catalog">
-    <div class="model-grid">
-        <div class="car-card" onclick="toggleInfo('info-tucson')">
-            <img src="TUCSON GRIS OSCURO.png" alt="Tucson HEV">
-            <h3>NEW TUCSON HEV 2026</h3>
-            <p style="color: #666; font-size: 13px;">Explorar ficha técnica ↓</p>
+    <div class="car-card">
+        <div class="panel-text">
+            <h1 style="font-size: 14px; color: #888; margin-bottom: 5px;">HYUNDAI</h1>
+            <h2>New Tucson HEV 2026</h2>
+            <p style="font-size: 14px; color: #555;">Supera lo común. Selecciona tu color:</p>
+            
+            <div class="color-selector">
+                <div class="dot" style="background: #D3D5DB;" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/COLOR2-TUCSON.png')" title="Plata"></div>
+                <div class="dot active" style="background: #F9F9FA;" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/BLANCO-COLORES-TUCSON.png')" title="Blanco Perla"></div>
+                <div class="dot" style="background: #292A2C;" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/GRIS-OSCURO-COLORES-TUCSON.png')" title="Gris Oscuro"></div>
+                <div class="dot" style="background: #121214;" onclick="changeTucsonColor(this, 'https://hyundai.pe/wp-content/uploads/2024/09/NEGRO-COLORES-TUCSON.png')" title="Negro"></div>
+            </div>
+
+            <div class="specs-grid">
+                <div class="spec-item">Motor: <b>1.6 Turbo HEV</b></div>
+                <div class="spec-item">Potencia: <b>230 ps</b></div>
+                <div class="spec-item">Cilindrada: <b>1,598 cc</b></div>
+                <div class="spec-item">Transmisión: <b>6 AT</b></div>
+            </div>
+
+            <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la Tucson Hybrid" class="btn-wa">CONSULTAR AHORA</a>
         </div>
 
-        <div id="info-tucson" class="info-panel">
-            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
-                <div style="flex: 1.5; min-width: 300px;">
-                    <h2 style="color: var(--geely-blue); margin-top:0;">New Tucson HEV</h2>
-                    
-                    <div class="specs-title">Motor / Transmisión</div>
-                    <div class="specs-grid">
-                        <div class="spec-item">Motor: <b>Smartstream 1.6 Turbo HEV</b></div>
-                        <div class="spec-item">Potencia: <b>230 ps</b></div>
-                        <div class="spec-item">Torque: <b>37.4 kg.m</b></div>
-                        <div class="spec-item">Transmisión: <b>Automática 6 Vel.</b></div>
-                        <div class="spec-item">Tracción: <b>Delantera</b></div>
-                    </div>
-
-                    <div class="specs-title" style="margin-top:20px;">Seguridad SmartSense</div>
-                    <div style="font-size: 12px; color: #555; column-count: 2;">
-                        ▪ 6 Airbags ▪ Cámara 360° ▪ LKA Carril ▪ FCA Colisión Frontal ▪ BCA Punto Ciego ▪ SCC Control crucero inteligente ▪ TPMS Presión neumáticos.
-                    </div>
-
-                    <a href="https://wa.me/595971723658?text=Info New Tucson HEV" class="btn-wa">CONSULTAR ASESORA</a>
-                </div>
-                <div style="flex: 1; text-align: center;">
-                    <img src="TUCSON GRIS OSCURO.png" style="width:100%; border-radius: 15px;">
-                    <p style="font-size: 10px; color: #999; margin-top: 15px;">Representa y Distribuye: AUTOMOTOR S.A.</p>
-                </div>
-            </div>
+        <div class="panel-img">
+            <img id="main-tucson" src="https://hyundai.pe/wp-content/uploads/2024/09/BLANCO-COLORES-TUCSON.png" alt="Tucson HEV">
+            <p style="font-size: 10px; color: #aaa; margin-top: 20px; text-align: center;">Representa y Distribuye: AUTOMOTOR S.A.</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <p><b>Brenda Gimenez</b> | Asesora Automotor S.A.</p>
-    <p>Avenida General José Gervasio Artigas 1921</p>
-    <p>centro.de.contacto@automotor.com.py | Tel.: (+595 21) 729 7878</p>
-    <p>Seguinos: <b>hyundaipy | hyundaiparaguay</b></p>
+    <span class="distribuidor">AUTOMOTOR S.A.</span>
+    <p><b>Brenda Gimenez</b> | Asesora Comercial</p>
+    
 </footer>
 
 <script>
-    function toggleInfo(id) {
-        document.querySelectorAll('.info-panel').forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(id);
-        target.classList.add('active');
-        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+    function changeTucsonColor(element, url) {
+        const img = document.getElementById('main-tucson');
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = url;
+            img.style.opacity = '1';
+        }, 200);
+        document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+        element.classList.add('active');
     }
 </script>
+
 </body>
 </html>
