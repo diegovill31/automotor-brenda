@@ -51,46 +51,53 @@
 
         footer { background: #1c1b1b; color: white; padding: 50px 20px; text-align: center; margin-top: 50px; }
         .distribuidor { color: var(--geely-blue); font-weight: 700; font-size: 16px; display: block; margin-bottom: 15px; }
-
-@media (max-width: 768px) { 
-            /* Reducimos el margen superior de la sección para que el carrusel y el auto estén cerca */
-            .section-catalog { 
-                padding: 20px 10px !important; 
-            }
-
+/* AJUSTES PARA CELULARES (DISEÑO COMPACTO) */
+        @media (max-width: 768px) { 
+            .section-catalog { padding: 20px 10px !important; }
             .car-card { 
                 display: flex !important;
                 flex-direction: column !important;
-                padding: 15px !important; /* Espacio interno mínimo */
-                gap: 10px !important;     /* Espacio mínimo entre foto y texto */
+                padding: 15px !important; 
+                gap: 10px !important;     
                 margin-top: 10px !important;
             } 
-
-            /* Quitamos espacios innecesarios en el título */
-            .panel-text h2 { 
-                font-size: 22px !important; 
-                margin: 0 0 5px 0 !important; 
-            }
-
-            /* Hacemos que la foto sea lo primero y no tenga márgenes grandes */
-            .panel-img { 
-                order: -1; 
-                margin: 0 !important;
-            }
-
-            /* Ajustamos la grilla de specs para que no ocupe tanto alto */
-            .specs-grid { 
-                grid-template-columns: 1fr !important; 
-                gap: 4px !important; 
-                margin-top: 10px !important;
-            }
-
+            .panel-text h2 { font-size: 22px !important; margin: 0 0 5px 0 !important; }
+            .panel-img { order: -1; margin: 0 !important; }
+            .specs-grid { grid-template-columns: 1fr !important; gap: 4px !important; margin-top: 10px !important; }
             .spec-item { padding: 4px 0 !important; }
-
-            /* El carrusel de marcas más pegado al header en móvil */
             .brand-carousel { margin-top: 80px; padding: 10px 0; }
         }
+
+        /* ESTILO DEL CARRUSEL (AQUÍ ESTÁ LA ANIMACIÓN) */
+        .brand-carousel { 
+            background: #fff; 
+            padding: 15px 0; 
+            margin-top: 80px; 
+            overflow: hidden; 
+            border-bottom: 1px solid #eee; 
+        }
+
+        .brand-track { 
+            display: flex; 
+            width: calc(200px * 12); 
+            animation: scroll 25s linear infinite; /* ESTO HACE QUE SE MUEVA */
+        }
+
+        .brand-logo { 
+            width: 200px; 
+            text-align: center; 
+            font-weight: 700; 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            color: #555; 
+        }
+
+        @keyframes scroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(calc(-200px * 6)); } 
+        }
     </style>
+
 </head>
 <body>
 
@@ -231,6 +238,7 @@
 
 </body>
 </html>
+
 
 
 
