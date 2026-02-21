@@ -140,6 +140,43 @@ footer a {
         .btn-wa { width: 100%; box-sizing: border-box; }
         .brand-carousel { margin-top: 80px; }
     }
+    /* DETECCIÓN AUTOMÁTICA DE MODO OSCURO */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #06131F; /* Fondo azul oscuro profundo */
+        color: #f8f9fa; /* Texto claro */
+    }
+
+    .car-card, .service-package, .benefit-card {
+        background-color: #0b1e2e; /* Fondo de tarjetas más oscuro */
+        border-color: #1a3a5a;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .panel-text h2, .model-title, .distribuidor {
+        color: #4da3ff; /* Un azul más vibrante para que resalte en negro */
+    }
+
+    .spec-item {
+        border-bottom: 1px solid #1a3a5a;
+        color: #ccc;
+    }
+
+    .spec-item b {
+        color: #fff;
+    }
+
+    footer {
+        background-color: #06131F;
+        border-top: 1px solid #1a3a5a;
+        color: #aaa;
+    }
+
+    /* Ajuste para que el texto sobre fondo gris no se pierda */
+    p, span {
+        color: #ddd;
+    }
+}
 </style>
 
 </head>
@@ -291,6 +328,7 @@ footer a {
     </script>
 
 </body>
+
 
 
 
