@@ -52,33 +52,43 @@
         footer { background: #1c1b1b; color: white; padding: 50px 20px; text-align: center; margin-top: 50px; }
         .distribuidor { color: var(--geely-blue); font-weight: 700; font-size: 16px; display: block; margin-bottom: 15px; }
 
-        @media (max-width: 768px) { .car-card { grid-template-columns: 1fr; padding: 25px; } .header-container { padding: 0 15px; } }
-    .brand-carousel { 
-            background: #fff; 
-            padding: 15px 0; 
-            margin-top: 80px; /* Ajustado al alto de tu header (80px) */
-            overflow: hidden; 
-            border-bottom: 1px solid #eee; 
-        }
+@media (max-width: 768px) { 
+            /* Reducimos el margen superior de la sección para que el carrusel y el auto estén cerca */
+            .section-catalog { 
+                padding: 20px 10px !important; 
+            }
 
-        .brand-track { 
-            display: flex; 
-            width: calc(200px * 12); 
-            animation: scroll 25s linear infinite; 
-        }
+            .car-card { 
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 15px !important; /* Espacio interno mínimo */
+                gap: 10px !important;     /* Espacio mínimo entre foto y texto */
+                margin-top: 10px !important;
+            } 
 
-        .brand-logo { 
-            width: 200px; 
-            text-align: center; 
-            font-weight: 700; 
-            font-size: 14px; 
-            text-transform: uppercase; 
-            color: #555; 
-        }
+            /* Quitamos espacios innecesarios en el título */
+            .panel-text h2 { 
+                font-size: 22px !important; 
+                margin: 0 0 5px 0 !important; 
+            }
 
-        @keyframes scroll { 
-            0% { transform: translateX(0); } 
-            100% { transform: translateX(calc(-200px * 6)); } 
+            /* Hacemos que la foto sea lo primero y no tenga márgenes grandes */
+            .panel-img { 
+                order: -1; 
+                margin: 0 !important;
+            }
+
+            /* Ajustamos la grilla de specs para que no ocupe tanto alto */
+            .specs-grid { 
+                grid-template-columns: 1fr !important; 
+                gap: 4px !important; 
+                margin-top: 10px !important;
+            }
+
+            .spec-item { padding: 4px 0 !important; }
+
+            /* El carrusel de marcas más pegado al header en móvil */
+            .brand-carousel { margin-top: 80px; padding: 10px 0; }
         }
     </style>
 </head>
@@ -197,22 +207,7 @@
 </div>
     
 <footer>
-    <span class="distribuidor">AUTOMOTOR S.A.</span>
-    <p><b>Brenda Gimenez</b> | Asesora Comercial</p>
-    
-    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 25px; flex-wrap: wrap;">
-        
-        <a href="https://wa.me/595971723658" target="_blank" style="background: var(--geely-blue); color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0, 107, 183, 0.2);">
-            <i class="fab fa-whatsapp" style="font-size: 20px;"></i> 
-            WHATSAPP
-        </a>
-        
-        <a href="https://www.instagram.com/brendagimenez_automotor/" target="_blank" style="background: var(--geely-blue); color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0, 107, 183, 0.2);">
-            <i class="fab fa-instagram" style="font-size: 20px;"></i> 
-            INSTAGRAM
-        </a>
-    </div>
-</footer>
+
 <script>
     function changeTucsonColor(element, url) {
         const img = document.getElementById('main-tucson');
@@ -236,6 +231,7 @@
 
 </body>
 </html>
+
 
 
 
