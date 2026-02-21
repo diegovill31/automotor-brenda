@@ -3,161 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brenda Gimenez | Automotor Paseo La Galería</title>
+    <title>Brenda Gimenez | Catálogo Automotor</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --geely-blue: #006BB7;
+            --geely-blue: #006BB7; /* El azul de Geely DO */
             --dark-blue: #06131F;
             --light-bg: #f8f9fa;
         }
 
         body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: var(--dark-blue); scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* --- LOGO CAROUSEL (ROTACIÓN INFINITA) --- */
-        .brand-carousel {
-            background: #fff;
-            padding: 20px 0;
-            margin-top: 75px; /* Debajo del header */
-            overflow: hidden;
-            border-bottom: 1px solid #eee;
-            position: relative;
-        }
-
-        .brand-track {
-            display: flex;
-            width: calc(250px * 12); /* Doble de marcas para el loop */
-            animation: scroll 30s linear infinite;
-        }
-
-        .brand-track .brand-logo {
-            width: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            color: #999;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 6)); }
-        }
-
-        /* --- HEADER --- */
+        /* HEADER ESTILO GEELY DO (AZUL) */
         header {
             position: fixed; top: 0; width: 100%; height: 75px;
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-            display: flex; align-items: center; z-index: 1000; border-bottom: 1px solid #eee;
+            background: var(--geely-blue); /* Fondo azul corporativo */
+            display: flex; align-items: center; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .header-container {
             max-width: 1200px; width: 100%; margin: 0 auto; display: flex; 
-            justify-content: space-between; align-items: center; padding: 0 25px; box-sizing: border-box;
+            justify-content: space-between; align-items: center; padding: 0 25px;
+        }
+        .brand-name { color: white; font-weight: 700; letter-spacing: 1px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 15px; }
+
+        /* CAROUSEL DE MARCAS (SIN #) */
+        .brand-carousel {
+            background: #fff; padding: 15px 0; margin-top: 75px; 
+            overflow: hidden; border-bottom: 1px solid #eee;
+        }
+        .brand-track { display: flex; width: calc(200px * 12); animation: scroll 25s linear infinite; }
+        .brand-logo { 
+            width: 200px; text-align: center; font-weight: 700; font-size: 14px; 
+            text-transform: uppercase; color: #555; letter-spacing: 1px;
+        }
+        @keyframes scroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(calc(-200px * 6)); } 
         }
 
-        /* --- GRID & CARDS --- */
+        /* GRID DE MODELOS */
         .section-catalog { padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
-        .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
         .car-card {
-            background: #fff; border: 1px solid #eee; border-radius: 15px; 
-            padding: 20px; text-align: center; cursor: pointer; transition: 0.3s;
+            background: #fff; border: 1px solid #eee; border-radius: 12px; 
+            padding: 25px; text-align: center; cursor: pointer; transition: 0.3s;
         }
-        .car-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: translateY(-5px); }
-        .car-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        .car-card:hover { border-color: var(--geely-blue); transform: translateY(-5px); }
+        .car-card img { width: 100%; height: auto; margin-bottom: 15px; }
 
-        /* --- INFO PANEL --- */
+        /* PANEL DE INFO DESPLEGABLE */
         .info-panel {
             display: none; grid-column: 1 / -1; background: var(--light-bg);
             border-radius: 20px; padding: 40px; margin-top: 20px; border: 1px solid #ddd;
         }
-        .info-panel.active { display: block; animation: fadeIn 0.5s forwards; }
+        .info-panel.active { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; animation: fadeIn 0.4s; }
 
-        .panel-flex { display: flex; gap: 40px; flex-wrap: wrap; }
-        .panel-text { flex: 1.2; min-width: 300px; }
-        .panel-img { flex: 1; min-width: 300px; text-align: center; }
+        /* SELECTOR DE COLORES */
+        .color-selector { display: flex; gap: 10px; margin: 20px 0; }
+        .dot {
+            width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+            border: 3px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); transition: 0.2s;
+        }
+        .dot:hover { transform: scale(1.1); }
 
-        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .spec-item { padding: 8px 0; border-bottom: 1px solid #ddd; font-size: 13px; text-align: left; }
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .spec-item { padding: 8px 0; border-bottom: 1px solid #dee2e6; font-size: 13px; text-align: left; }
         .spec-item b { color: var(--geely-blue); }
 
-        .price-tag { font-size: 24px; font-weight: 700; color: #000; margin: 15px 0; display: block; }
-        .btn-wa { background: #25d366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 5px; display: inline-block; margin-top: 20px; font-weight: 700; }
+        .btn-wa {
+            background: #25d366; color: white; text-decoration: none;
+            padding: 12px 25px; border-radius: 6px; display: inline-block; 
+            margin-top: 25px; font-weight: 700; text-align: center;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        footer { background: #f0f0f0; padding: 40px; text-align: center; }
+        footer { background: #f0f0f0; padding: 40px; text-align: center; font-size: 14px; }
+        
+        @media (max-width: 768px) { .info-panel.active { grid-template-columns: 1fr; padding: 20px; } }
     </style>
 </head>
 <body>
 
 <header>
     <div class="header-container">
-        <div style="display: flex; align-items: center; gap: 20px;">
-            <img src="https://geely.com.do/wp-content/uploads/2025/03/logo-black.svg" style="height: 20px;">
-            <span style="border-left: 2px solid #eee; padding-left: 20px; font-weight: 700; font-size: 14px;">BRENDA GIMENEZ</span>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="https://geely.com.do/wp-content/uploads/2025/03/logotipo.svg" style="height: 22px; filter: brightness(0) invert(1);">
+            <span class="brand-name">BRENDA GIMENEZ</span>
         </div>
-        <a href="https://wa.me/595971723658" class="btn-wa" style="margin:0; padding: 8px 15px; font-size: 12px;">WHATSAPP</a>
+        <a href="https://wa.me/595971723658" style="background:white; color:var(--geely-blue); text-decoration:none; padding: 8px 15px; border-radius:4px; font-weight:700; font-size:12px;">WHATSAPP</a>
     </div>
 </header>
 
 <div class="brand-carousel">
     <div class="brand-track">
-        <div class="brand-logo">#Hyundai</div>
-        <div class="brand-logo">#Isuzu</div>
-        <div class="brand-logo">#Geely</div>
-        <div class="brand-logo">#KGM</div>
-        <div class="brand-logo">#Maserati</div>
-        <div class="brand-logo">#LynkCo</div>
-        <div class="brand-logo">#Hyundai</div>
-        <div class="brand-logo">#Isuzu</div>
-        <div class="brand-logo">#Geely</div>
-        <div class="brand-logo">#KGM</div>
-        <div class="brand-logo">#Maserati</div>
-        <div class="brand-logo">#LynkCo</div>
+        <div class="brand-logo">Hyundai</div>
+        <div class="brand-logo">Isuzu</div>
+        <div class="brand-logo">Geely</div>
+        <div class="brand-logo">KGM</div>
+        <div class="brand-logo">Maserati</div>
+        <div class="brand-logo">Lynk&Co</div>
+        <div class="brand-logo">Hyundai</div>
+        <div class="brand-logo">Isuzu</div>
+        <div class="brand-logo">Geely</div>
+        <div class="brand-logo">KGM</div>
+        <div class="brand-logo">Maserati</div>
+        <div class="brand-logo">Lynk&Co</div>
     </div>
 </div>
 
 <section class="section-catalog">
-    <h2 style="text-align: center; margin-bottom: 40px;">Modelos en Paseo La Galería</h2>
-    
     <div class="model-grid">
-        <div class="car-card" onclick="toggleInfo('info-torres')">
-            <img src="https://geely.com.do/wp-content/uploads/2025/03/vehiculo-thumb-STARRAY.webp" style="filter: brightness(0.7);" alt="KGM Torres">
-            <h3>KGM TORRES 2026</h3>
-            <p style="color: #666; font-size: 13px;">Ver equipamiento completo ↓</p>
+        
+        <div class="car-card" onclick="toggleInfo('info-tucson')">
+            <img src="https://www.hyundai.com/content/dam/hyundai/global/en/images/vehicle-model/tucson-nx4-he-fl/highlights/tucson-fl-nx4-he-highlights-exterior-pc.png" alt="Tucson">
+            <h3>HYUNDAI TUCSON HEV</h3>
+            <p style="color: #666; font-size: 13px;">Ver colores y ficha técnica ↓</p>
         </div>
 
         <div class="car-card" onclick="toggleInfo('info-gx3')">
-            <img src="https://geely.com.do/wp-content/uploads/2025/03/vehiculo-thumb-GX3PRO.webp" alt="Geely GX3">
+            <img src="https://geely.com.do/wp-content/uploads/2025/03/vehiculo-thumb-GX3PRO.webp" alt="GX3 Pro">
             <h3>GEELY GX3 PRO AT</h3>
-            <p style="color: #666; font-size: 13px;">Explorar colores ↓</p>
+            <p style="color: #666; font-size: 13px;">Explorar colores y detalles ↓</p>
         </div>
 
-        <div id="info-torres" class="info-panel">
+        <div id="info-tucson" class="info-panel">
             <div class="panel-flex">
                 <div class="panel-text">
-                    <h2 style="margin-top:0;">KGM TORRES | Motor 1.5 Turbo</h2>
-                    <span class="price-tag">PYG 3.500.000 <small style="font-size:12px; font-weight:400;">(Entrega inicial / Cuota)</small></span>
-                    
-                    <div class="specs-grid">
-                        <div class="spec-item">✅ Motor: <b>1.5cc Turbo</b></div>
-                        <div class="spec-item">✅ Transmisión: <b>Caja Automática</b></div>
-                        <div class="spec-item">✅ Airbags: <b>8 Airbags</b></div>
-                        <div class="spec-item">✅ Manejo: <b>3 Modos</b></div>
-                        <div class="spec-item">✅ Faros: <b>Full LED</b></div>
-                        <div class="spec-item">✅ Techo: <b>Solar Corredizo</b></div>
-                        <div class="spec-item">✅ Aire: <b>Bi-Zona</b></div>
-                        <div class="spec-item">✅ Pantalla: <b>9" Android/Apple</b></div>
+                    <h2 style="color: var(--geely-blue);">New Tucson Hybrid</h2>
+                    <p><b>Selecciona el acabado:</b></p>
+                    <div class="color-selector">
+                        <div class="dot" style="background: #D2D4D6;" title="Plata" onclick="changeColor('tucson-img', 'https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Tucson/800x430-81.png')"></div>
+                        <div class="dot" style="background: #F4F4F4;" title="Blanco Perla" onclick="changeColor('tucson-img', 'https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Tucson/800x430-14.png')"></div>
+                        <div class="dot" style="background: #54585A;" title="Gris Oscuro" onclick="changeColor('tucson-img', 'https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Tucson/800x430-17.png')"></div>
+                        <div class="dot" style="background: #000000;" title="Negro" onclick="changeColor('tucson-img', 'https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Tucson/800x430-15.png')"></div>
                     </div>
-                    <p style="font-size:12px; color:#777; margin-top:15px;">Equipamiento extra: Asientos de cuero, levas al volante (Paddle Shifts), cargador inalámbrico y luces ambientales multicolor.</p>
-                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero info de la KGM Torres" class="btn-wa">Reservar Test Drive</a>
+                    <div class="specs-grid">
+                        <div class="spec-item">Motor: <b>1.6 Turbo HEV</b></div>
+                        <div class="spec-item">Potencia: <b>230 PS</b></div>
+                        <div class="spec-item">Caja: <b>AT 6 Vel.</b></div>
+                        <div class="spec-item">Maletero: <b>539 L</b></div>
+                    </div>
+                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero la Tucson Hybrid" class="btn-wa">CONSULTAR PLANES</a>
                 </div>
                 <div class="panel-img">
-                    <img src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-hero.webp" style="width:100%; border-radius:15px; filter: grayscale(1);">
+                    <img id="tucson-img" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/vehicle-thumbnail/Tucson/800x430-81.png" style="width:100%;">
                 </div>
             </div>
         </div>
@@ -165,16 +156,21 @@
         <div id="info-gx3" class="info-panel">
             <div class="panel-flex">
                 <div class="panel-text">
-                    <h2 style="color: var(--geely-blue); margin-top:0;">Geely GX3 PRO</h2>
-                    <p>La SUV compacta líder. Disponible en varios colores.</p>
+                    <h2 style="color: var(--geely-blue);">Geely GX3 Pro</h2>
+                    <p><b>Elige tu color:</b></p>
+                    <div class="color-selector">
+                        <div class="dot" style="background: #ffffff;" onclick="changeColor('gx3-img', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp')"></div>
+                        <div class="dot" style="background: #e63946;" onclick="changeColor('gx3-img', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-01.webp')"></div>
+                        <div class="dot" style="background: #2b5d95;" onclick="changeColor('gx3-img', 'https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-02.webp')"></div>
+                    </div>
                     <div class="specs-grid">
                         <div class="spec-item">Motor: <b>1.5L MPI</b></div>
                         <div class="spec-item">Potencia: <b>102 HP</b></div>
                     </div>
-                    <a href="https://wa.me/595971723658?text=Info GX3" class="btn-wa">Más información</a>
+                    <a href="https://wa.me/595971723658?text=Hola Brenda, quiero la GX3 Pro" class="btn-wa">COTIZAR AHORA</a>
                 </div>
                 <div class="panel-img">
-                    <img src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp" style="width:100%;">
+                    <img id="gx3-img" src="https://geely.com.do/wp-content/uploads/2025/03/gx3-pro-color-04.webp" style="width:100%;">
                 </div>
             </div>
         </div>
@@ -183,8 +179,9 @@
 </section>
 
 <footer>
-    <p><strong>Brenda Gimenez</strong> - Asesora Especialista en Automotor S.A.</p>
-    <p>📍 Paseo La Galería, Nivel 1 - Cel: +595 971 723 658</p>
+    <p><strong>Brenda Gimenez</strong> | Automotor S.A. Paraguay</p>
+    <p>📍 Paseo La Galería - Nivel 1</p>
+    <p>WhatsApp: +595 971 723 658</p>
 </footer>
 
 <script>
@@ -198,8 +195,12 @@
             setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
         }
     }
+    function changeColor(imgId, url) {
+        const img = document.getElementById(imgId);
+        img.style.opacity = '0';
+        setTimeout(() => { img.src = url; img.style.opacity = '1'; }, 200);
+    }
 </script>
 
 </body>
 </html>
-
